@@ -31,20 +31,20 @@ class HomeController extends Controller
     DB::transaction(
       function() {
         for($i = 0; 100 > $i; $i++) {
-          for($i = 0; 1000 > $i; $i++) {
+          for($ii = 0; 1000 > $ii; $ii++) {
+            $r = $ii + (($i + 1) * 1000);
+
+
             DB::table('users')->insert(
               [
-                'name'             => "User: $i",
-                'email'            => "mail$i@mail.ru",
+                'name'             => "User: $r",
+                'email'            => "mail$r@mail.ru",
                 'password'         => md5(rand(1000, 9999)),
                 'text'             => 'test',
                 'description'      => 'test',
                 'colors'           => 'red',
                 'abilities'        => 'magic',
                 'points'           => 4.8,
-                'user_group_id '   => 1,
-                'user_message_id ' => 1,
-                'user_scraps_id '  => 1,
                 'created_at'       => Carbon::now(),
               ]
             );
